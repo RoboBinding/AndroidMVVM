@@ -7,7 +7,7 @@ package org.robobinding.androidmvvm;
  * @version $Revision: 1.0 $
  * @author Cheng Wei
  */
-@org.robobinding.presentationmodel.PresentationModel
+@org.robobinding.aspects.PresentationModel
 public class PresentationModel {
     private String name;
     public String getHello() {
