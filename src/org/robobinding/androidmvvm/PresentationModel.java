@@ -1,5 +1,7 @@
 package org.robobinding.androidmvvm;
 
+import org.robobinding.presentationmodel.AbstractPresentationModel;
+
 
 /**
  *
@@ -7,8 +9,7 @@ package org.robobinding.androidmvvm;
  * @version $Revision: 1.0 $
  * @author Cheng Wei
  */
-@org.robobinding.aspects.PresentationModel
-public class PresentationModel {
+public class PresentationModel extends AbstractPresentationModel {
     private String name;
     public String getHello() {
 	return name + ": hello Android MVVM(Presentation Model)!";
