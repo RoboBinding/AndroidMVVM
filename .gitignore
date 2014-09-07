@@ -1,2 +1,8 @@
 /bin
 /gen
+/app/app.iml
+/app/build
+/AndroidMVVM.iml
+/.gradle
+/.idea
+/build
