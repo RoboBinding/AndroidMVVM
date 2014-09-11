@@ -42,5 +42,12 @@ ext {
 }
 
 dependencies {
-	compile "org.robobinding:robobinding:${robobindingVersion}"
+	compile("org.robobinding:robobinding:${robobindingVersion}:with-dependencies") {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
 }
+
+/*
+configurations.compile.resolutionStrategy {
+    cacheChangingModulesFor 0, 'seconds'
+}*/
