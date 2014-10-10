@@ -5,10 +5,12 @@ buildscript {
 
 	dependencies {
 		classpath 'com.android.tools.build:gradle:0.12.2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.+'
 	}
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
 	compileSdkVersion 19
@@ -34,6 +36,15 @@ repositories {
 		name 'SonaType snapshot repository'
 		url 'https://oss.sonatype.org/content/repositories/snapshots'
 	}
+	/*
+    maven() {
+        name 'RoboBinding Framework Maven Repository'
+        url "file://D:/git/RoboBinding/framework/mavenRepo"
+    }
+    maven() {
+        name 'RoboBinding CodeGen Maven Repository'
+        url "file://D:/git/RoboBinding/codegen/mavenRepo"
+    }*/
 }
 
 ext {
@@ -42,9 +53,10 @@ ext {
 }
 
 dependencies {
-	compile("org.robobinding:robobinding:${robobindingVersion}:with-dependencies") {
+	compile("org.robobinding:robobinding:$robobindingVersion:with-dependencies") {
         exclude group: 'com.google.guava', module: 'guava'
     }
+    apt "org.robobinding:codegen:$robobindingVersion"
 }
 
 /*

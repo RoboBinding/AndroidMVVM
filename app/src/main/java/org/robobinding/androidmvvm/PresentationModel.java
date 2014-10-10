@@ -1,29 +1,41 @@
 package org.robobinding.androidmvvm;
 
-import org.robobinding.presentationmodel.AbstractPresentationModel;
+import org.robobinding.presentationmodel.HasPresentationModelChangeSupport;
+import org.robobinding.presentationmodel.PresentationModelChangeSupport;
 
 
 /**
- *
- * @since 1.0
- * @version $Revision: 1.0 $
  * @author Cheng Wei
+ * @version $Revision: 1.0 $
+ * @since 1.0
  */
-public class PresentationModel extends AbstractPresentationModel {
+@org.robobinding.annotation.PresentationModel
+public class PresentationModel implements HasPresentationModelChangeSupport {
+    private PresentationModelChangeSupport changeSupport;
     private String name;
+
+    public PresentationModel() {
+        changeSupport = new PresentationModelChangeSupport(this);
+    }
+
     public String getHello() {
-	return name + ": hello Android MVVM(Presentation Model)!";
+        return name + ": hello Android MVVM(Presentation Model)!";
     }
-    
+
     public String getName() {
-	return name;
+        return name;
     }
-    
+
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
-    
+
     public void sayHello() {
-	firePropertyChange("hello");
+        changeSupport.firePropertyChange("hello");
+    }
+
+    @Override
+    public PresentationModelChangeSupport getPresentationModelChangeSupport() {
+        return changeSupport;
     }
 }
