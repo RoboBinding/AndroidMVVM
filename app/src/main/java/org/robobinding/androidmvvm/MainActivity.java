@@ -1,11 +1,15 @@
 package org.robobinding.androidmvvm;
 
+import org.robobinding.ViewBinder;
+import org.robobinding.binder.BinderFactory;
+import org.robobinding.binder.BinderFactoryBuilder;
 import org.robobinding.binder.Binders;
-import org.robobinding.hellomvvm.R;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
 /**
 *
 * @since 1.0
@@ -16,11 +20,17 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);
 	
-	PresentationModel presentationModel = new PresentationModel();
-	View rootView = Binders.inflateAndBindWithoutPreInitializingViews(this, R.layout.activity_main, presentationModel);
-	setContentView(rootView);
+		PresentationModel presentationModel = new PresentationModel();
+		ViewBinder viewBinder = createViewBinder();
+		View rootView = viewBinder.inflateAndBind(R.layout.activity_main, presentationModel);
+		setContentView(rootView);
     }
+
+	private ViewBinder createViewBinder() {
+		BinderFactory reusableBinderFactory = new BinderFactoryBuilder().build();
+		return reusableBinderFactory.createViewBinder(this);
+	}
 
 }
