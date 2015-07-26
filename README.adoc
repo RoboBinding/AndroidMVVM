@@ -1,6 +1,8 @@
 AndroidMVVM
 ===========
 
+**Note:** issue the following in command line - 'gradlew build --refresh-dependencies' in Windows or './gradlew build --refresh-dependencies' in Linux or Mac to force update to the latest RoboBinding snapshot when required.
+
 A minimal Android app with MVVM pattern based on RoboBinding.
 
 The project can be directly imported into Android Studio.
